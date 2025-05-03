@@ -290,8 +290,10 @@ a:hover {
   box-shadow: 0 0 30px white;
   transition: transform 0.3s ease;
 }
+
 .iglink {
   position: absolute;
   top: 145px;
   left: 115px;
   size: 5px:
+}

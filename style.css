@@ -1,0 +1,357 @@
+
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100%;
+      background: #004080;
+      overflow-x: hidden;
+      position: relative;
+      color: white;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 120%;
+      z-index: 1;
+    }
+    .navbar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+    .nav-btn {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .nav-btn:hover {
+      background: white;
+      color: black;
+    }
+    .nav-btn.active {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    .frame {
+      position: relative;
+      z-index: 2;
+      width: 98%;
+      max-width: 600px;
+      margin: 100px auto 0 auto;
+      padding: 30px;
+      border: 2px solid white;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      display: none;
+    }
+    .frame.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .fade-in {
+      animation: fadeIn 0.4s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      margin-bottom: 20px;
+    }
+    .button-group {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .button-group button {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .button-group button:hover {
+      background: white;
+      color: black;
+    }
+    .panel-toggle {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid white;
+      border-radius: 15px;
+      margin-top: 20px;
+      padding: 0 20px;
+    }
+    .panel-toggle.show {
+      max-height: 10000px;
+      opacity: 1;
+      transform: translateY(0);
+      padding: 20px;
+    }
+.contact-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.social-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-col a {
+  border: 2px solid white;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  background: transparent;
+  transition: background 0.3s;
+}
+
+.social-col a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+.fursona-img {
+  max-width: 100%; /* Gambar nggak lebih besar dari kontainer */
+  height: auto; /* Menjaga proporsi gambar */
+  display: block; /* Membuat gambar jadi elemen block, tidak inline */
+  margin: 0 auto; /* Membuat gambar terpusat secara horizontal */
+}
+
+    a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffcc00; /* contoh: kuning pas hover */
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.glitch-glow {
+  font-size: 2.5rem;
+  color: #D7E9F5;
+  animation: float 3s ease-in-out infinite, glitch-flicker 2s infinite;
+  text-shadow:
+    0 0 5px #7FBADC,
+    0 0 10px #7FBADC,
+    0 0 20px #7FBADC,
+    0 0 40px #7FBADC;
+}
+
+/* Naik-turun */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Glitch flicker */
+@keyframes glitch-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 5px #7FBADC,
+      0 0 10px #7FBADC,
+      0 0 20px #7FBADC,
+      0 0 40px #7FBADC;
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.7;
+  }
+}
+
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px; /* sudut halus, bukan bulat penuh */
+  object-fit: cover;
+  border: 2px solid white;
+  margin-bottom: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(127, 186, 220, 0.4);
+  }
+  90% {
+    box-shadow: 0 0 20px rgba(127, 186, 220, 0.7);
+  }
+}
+
+.profile-pic {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+ 
+  .left-list {
+    text-align: left;
+    list-style-position: inside;
+    padding-left: 0;
+  }
+
+  .center-title {
+    text-align: center;
+  }
+
+. kontak {
+  position:relative;
+  height:5px
+
+}
+
+.image-zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.zoomed-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  box-shadow: 0 0 30px white;
+  transition: transform 0.3s ease;
+}
+
+.iglink {
+  text-align: center;
+  margin: 0 auto;
+  width: fit-content;
+  display: block;
+  top: 50px;
+}
+
+
+
+
+.play-button {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+
+
+
+/* Glow Text */
+.glow-text {
+  color: #ffffff;
+  text-shadow: 0 0 10px #aeeaff, 0 0 20px #aeeaff, 0 0 30px #ffffff;
+}
+
+/* Snow pile at bottom */
+.snow-pile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: radial-gradient(circle at 50% 100%, #ffffff 20%, transparent 80%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.3;
+  animation: snowPileGrow 10s ease-in-out infinite alternate;
+}
+
+@keyframes snowPileGrow {
+  0% {
+    height: 100px;
+    opacity: 0.2;
+  }
+  100% {
+    height: 140px;
+    opacity: 0.4;
+  }
+}
+
+body {
+  cursor: url('img/snowflake.png'), auto;
+}

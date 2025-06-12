@@ -129,23 +129,54 @@ Someone appeared behind him, The Medium, allowing him to carry the object with g
     <p>pfp Art by <a href="https://www.instagram.com/just_a_cocox">@just_a_cocox</a></p>
     <p>Reference Sheet by <a href="https://x.com/YunluDt">@YunluDt</a></p>
   </footer>
+  
+  <a href="https://zensfox.github.io/yuki/" class="link-btn yuki">
+  ✨ Yuki Web
+</a>
   </div>
 
   <!-- Frame Project -->
   <div id="project" class="frame">
     <h1>Gallery</h1>
     <p>This is the project page that I'm currently working on, let's take a look</p>
-    <img src="bg.jpg" alt="project" style="width: 100%; border-radius: 10px;">
-    <p><a href="#">Coming Soon</a></p>
+<!-- GALERI STYLE PS4 SCROLL-CENTERED -->
+<div class="gallery-wrapper">
+  <!-- Fokus Gambar Judul (di atas thumbnail aktif) -->
+  <h2 class="gallery-title" id="selected-title">Zen in Snowfall</h2>
+
+  <!-- Thumbnail Carousel (centered selector) -->
+  <div class="carousel-container">
+    <button class="carousel-btn left" onclick="navigate(-1)">◄</button>
+
+    <div class="thumbnail-track" id="thumbnailTrack">
+      <img src="img1.jpg" class="thumb active" onclick="selectArt(0)">
+      <img src="img2.jpg" class="thumb" onclick="selectArt(1)">
+      <img src="img3.jpg" class="thumb" onclick="selectArt(2)">
+    </div>
+
+    <button class="carousel-btn right" onclick="navigate(1)">►</button>
   </div>
 
-
-
-
-  <!-- Zoom Viewer -->
-  <div id="imageZoomOverlay" class="image-zoom-overlay" onclick="closeZoom()">
-    <img id="zoomedImage" class="zoomed-image" src="" alt="Zoomed Fursona">
+  <!-- Gambar Utama -->
+  <div class="main-preview">
+    <img id="main-art" src="img1.jpg" alt="Artwork preview">
   </div>
+
+  <!-- Info Detail -->
+  <ul class="art-info">
+    <li><strong>🎨 Artist:</strong> @snowtail</li>
+    <li><strong>📅 Date:</strong> May 2025</li>
+    <li><strong>🖌️ Tools:</strong> CSP, Wacom</li>
+    <li><strong>📎 Tags:</strong> snow, winter, zen, digital</li>
+  </ul>
+</div>
+
+
+
+
+ 
+
+
 
   <!-- Theme Transition -->
   <div id="theme-transition-overlay"></div>
@@ -154,8 +185,25 @@ Someone appeared behind him, The Medium, allowing him to carry the object with g
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init();</script>
-    <div class="release-watermark">2-5-2025 · Build A</div>
+
 </div>
 </div>
+
+
+
+
+ <!-- Zoom Viewer -->
+<div id="imageZoomOverlay" onclick="closeZoom()" style="z-index: 999999;">
+  <img id="zoomedImage" src="" alt="Zoomed preview">
+</div>
+
+ </div> <!-- penutup #main-content -->
+
+<div class="watermark">© 2-5-2025 ZensFox ✓</div>
+
+
 </body>
 </html>
+
+</body>
+    </html>

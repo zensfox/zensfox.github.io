@@ -1,0 +1,1194 @@
+/* =========================================================
+   ZENSFOX — MINIMAL AURORA PANEL (v5)
+   Cleaned & structured stylesheet
+   ========================================================= */
+
+/* ---------- ROOT VARIABLES ---------- */
+:root {
+  --bg-deep: #4C6FAE;
+  --bg-mid: #A8CFFF;
+  --accent: #9AD5FF;
+  --accent-2: #E6F7FF;
+  --muted: #DFF7FF;
+  --glass: rgba(255, 255, 255, 0.03);
+  ---bg: #7BF5FF;
+  --radius: 14px;
+  --easing: cubic-bezier(.2, .9, .2, 1);
+--ui: "Outfit", sans-serif;
+--mono: "Outfit", sans-serif;
+  --max-w: 940px;
+  --panel-w: min(92vw, 920px);
+  --panel-h: min(82vh, 720px);
+  --shadow: 0 30px 80px rgba(2, 10, 20, 0.55);
+}
+
+
+* {
+  font-family: "Outfit", sans-serif !important;
+}
+
+
+
+
+/* ---------- RESET ---------- */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--ui);
+  -webkit-font-smoothing: antialiased;
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 85%);
+  color: #E8FBFF;
+  overflow: hidden;
+}
+
+
+body {
+  background: linear-gradient(
+    180deg,
+    #243B55 0%,
+    #4C6FAE 40%,
+    #7EA9E8 80%,
+    #A8CFFF 100%
+  );
+}
+
+
+
+
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+/* =========================================================
+   MAIN LAYOUT STRUCTURE
+   ========================================================= */
+.stage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  gap: 12px;
+  z-index: 0;
+}
+
+/* ---------- Topbar (logo + nav) ---------- */
+.topbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(96vw, var(--max-w));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 60;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== Logo (signature.jpg) ===== */
+.logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  filter: drop-shadow(0 0 6px rgba(131, 230, 255, 0.25));
+  transition: transform 0.25s var(--easing), filter 0.25s var(--easing);
+}
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(131, 230, 255, 0.45));
+}
+
+.title {
+  font-weight: 900;
+  font-size: 1.35rem; /* 🔹 Dibesar dari 1.1rem */
+  font-family: "Outfit", sans-serif;
+  background: linear-gradient(180deg, #9AD5FF 0%, #E6F7FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: titleFade 1s ease forwards;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: subFade 1s ease forwards;
+  animation-delay: 0.9s; /* 🔹 muncul setelah ZensFox selesai */
+}
+
+/* Animations */
+@keyframes titleFade {
+  0% { opacity: 0; transform: translateY(8px) scale(0.96); }
+  60% { opacity: 1; transform: translateY(-2px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes subFade {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ---------- Nav buttons ---------- */
+.topnav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+/* ===== Navigation Buttons with Icons ===== */
+.nav-btn {
+  width: clamp(38px, 10vw, 46px);
+  height: clamp(38px, 10vw, 46px);
+  font-size: clamp(18px, 4.5vw, 24px);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 3px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s var(--easing);
+  cursor: pointer;
+  font-size: 50px;
+}
+@media (max-width: 480px) {
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+ 
+
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+.nav-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.75;
+  transition: opacity 0.25s var(--easing);
+}
+
+.nav-btn:hover img {
+  opacity: 1;
+}
+
+.nav-btn.active {
+  background: rgba(131, 230, 255, 0.08);
+  border-color: rgba(131, 230, 255, 0.25);
+  box-shadow: 0 0 12px rgba(131, 230, 255, 0.25);
+}
+
+.nav-btn.active img {
+  opacity: 1;
+}
+
+/* =========================================================
+   CENTRAL PANEL
+   ========================================================= */
+.surface {
+  width: var(--panel-w);
+  height: var(--panel-h);
+  max-width: var(--max-w);
+  border-radius: var(--radius);
+  background: rgba(10, 20, 40, 0.5); /* solid glassy effect */
+  backdrop-filter: none;
+  border: 1px solid #4C6FAE;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.surface-inner {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+  height: 100%;
+  padding: 18px;
+}
+
+/* ---------- Panel Header ---------- */
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+.panel-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Panel Body ---------- */
+.panel-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.page {
+  position: absolute;
+  inset: 0;
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+.page.show {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  transition: opacity 360ms var(--easing), transform 360ms var(--easing);
+}
+.page-inner {
+  overflow: auto;
+  padding-right: 6px;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================================
+   ZENSFOX — Footer (di luar panel)
+   ========================================================= */
+/* =========================================================
+   ZENSFOX — Footer (kontras tinggi, tetap aurora aesthetic)
+   ========================================================= */
+.zen-footer {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9rem;
+  opacity: 0;
+  animation: footerFadeIn 1.6s ease forwards 1.2s;
+  z-index: 80;
+  pointer-events: none;
+}
+
+.zen-footer p {
+  margin: 0;
+  font-weight: 600;
+  background: linear-gradient(90deg, #0078A5 0%, #00E5FF 50%, #A6FFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 6px rgba(0, 229, 255, 0.4),
+    0 0 12px rgba(0, 229, 255, 0.2),
+    0 0 18px rgba(0, 229, 255, 0.15);
+}
+
+@keyframes footerFadeIn {
+  0% { opacity: 0; transform: translate(-50%, 10px); }
+  100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
+
+/* =========================================================
+   CONTENT STYLES
+   ========================================================= */
+.hero-title {
+  font-family: "Exo 2", var(--ui);
+  font-size: 1.25rem;
+  margin: 0;
+}
+.hero-sub {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ----- About section ----- */
+.about-grid {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 4px solid #4C6FAE;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.kv {
+  font-family: font-family: "Outfit", sans-serif;
+  background: linear-gradient(180deg, #9AD5FF 0%, #E6F7FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.bio {
+  color: var(--muted);
+  line-height: 1.45;
+  font-family: "Outfit", sans-serif;
+    font-style: normal;
+    font-size: 1.1rem;
+ 
+}
+
+/* ----- Works section ----- */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+.work {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.02);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  cursor: pointer;
+}
+.work img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+/* ----- Contact section ----- */
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.cta {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #042633;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* =========================================================
+   UTILITY & SMALL COMPONENTS
+   ========================================================= */
+.small-btn {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+  background: transparent;
+  color: var(--muted);
+}
+.small-btn.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #042633;
+}
+.focus-ring:focus {
+  outline: 3px solid rgba(174,234,255,0.12);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 760px) {
+  :root { --panel-h: 78vh; }
+  .topbar { left: 12px; right: 12px; transform: none; }
+  .surface { width: 92vw; height: 78vh; border-radius: 12px; }
+  .works-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 420px) {
+  :root { --panel-h: 82vh; }
+  .works-grid { grid-template-columns: 1fr; }
+  .panel-head { gap: 8px; }
+  .panel-foot { font-size: 0.88rem; }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .bg-aurora { animation: none; }
+  .page { transition: none; }
+}
+
+
+
+/* ===== Info Layout (Location + Skills) ===== */
+.info-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 32px; /* ⬅️ tambah jarak antar kolom kiri-kanan */
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 5px; /* ⬅️ jarak ke atas */
+  margin-bottom: 5px; /* ⬅️ jarak ke bawah */
+}
+
+.info-block {
+  flex: 1 1 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px; /* ⬅️ kasih ruang antar item di satu blok */
+}
+
+
+/* ===== Skill Bars ===== */
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+  
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  
+}
+
+.skill span {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.1rem !important;
+  color: #BFD9E8 !important;
+  font-weight: 600;
+}
+
+
+
+.bar {
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 4px;
+  transition: width 0.5s var(--easing);
+}
+
+/* Responsive: tetap sejajar di HP, tapi scaling lembut */
+@media (max-width: 760px) {
+  .info-flex {
+    gap: 14px;
+  }
+  .skill span {
+    font-size: 0.82rem;
+  }
+  .bar {
+    height: 5px;
+  }
+}
+
+
+
+/* ===== Section Label (About Me) ===== */
+.section-label {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.9rem !important;
+  font-weight: 700;
+  background: linear-gradient(180deg, #9AD5FF 0%, #E6F7FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  letter-spacing: 0.5px;
+  margin-top: 14px;
+  margin-bottom: 2px;
+  text-align: left; /* biar tetap rata kiri meski konten di tengah panel */
+}
+
+
+
+
+/* ===== Fursona Section ===== */
+.fursona-img {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 0 12px rgba(131,230,255,0.08);
+}
+
+.fursona-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+  .left-list {
+    text-align: left;
+    list-style-position: inside;
+    padding-left: 0;
+    color: var(--muted);
+    margin-top: 5px;
+    font-family: "Outfit", sans-serif;
+    font-style: normal;
+    font-size: auto;
+  line-height: 1.45;
+  }
+
+
+.fursona-desc {
+  color: var(--muted);
+  line-height: 1.45;
+  font-family: "Outfit", sans-serif;
+    font-style: normal;
+    font-size: auto;
+}
+
+
+/* ===== Info Grid (Like / Hobby / Dislike) ===== */
+.fursona-info {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===== Like + Hobby Grid ===== */
+.info-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* dua kolom fix */
+  gap: 16px 24px; /* atas-bawah 16px, kiri-kanan 24px */
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .info-pair {
+    grid-template-columns: 1fr 1fr; /* tetap dua kolom di HP */
+    gap: 8px 16px; /* jarak makin rapet di layar kecil */
+  }
+}
+
+.info-pair .kv {
+  margin-bottom: 4px;
+}
+
+
+.info-single {
+  margin-top: 6px;
+}
+
+.info-list {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.93rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Responsive – biar di HP tetap dua kolom tapi muat */
+@media (max-width: 760px) {
+  .info-pair {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
+
+
+
+
+/* =========================================================
+   BACKGROUND — PS-style Aurora Gradient
+   ========================================================= */
+
+
+
+
+
+.zen-contact {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.contact-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(180deg, #9AD5FF 0%, #E6F7FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  letter-spacing: 0.4px;
+}
+
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.contact-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  transition: all 0.35s ease;
+  overflow: hidden;
+  min-width: 230px;
+}
+
+.contact-card img {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 6px rgba(131,230,255,0.3));
+}
+
+.contact-info h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+.contact-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* glowing aurora motion layer */
+.contact-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(131,230,255,0.15), transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(180,150,255,0.1), transparent 70%);
+  mix-blend-mode: screen;
+  filter: blur(40px);
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: rgba(131,230,255,0.25);
+  box-shadow: 0 6px 24px rgba(131,230,255,0.25);
+}
+.contact-card:hover .contact-glow {
+  opacity: 0.9;
+}
+
+/* Responsive fix */
+@media (max-width: 600px) {
+  .contact-card {
+    min-width: 90%;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   WORKS PREVIEW MODAL (Final, non-conflict version)
+   ========================================================= */
+.preview-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 8, 14, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 200;
+}
+
+.preview-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.preview-inner {
+  position: relative;
+  background: rgba(10, 20, 30, 0.8);
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.5);
+  max-width: 92vw;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeZoom 0.3s ease forwards;
+}
+
+@keyframes fadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 75vh;
+  border-radius: 10px;
+}
+
+.preview-caption {
+  color: var(--muted);
+  font-family: "Outfit", sans-serif;
+    font-style: normal;
+    font-size: auto;
+  margin-top: 6px;
+  text-align: center;
+  
+}
+
+/* --------- tombol close & navigasi --------- */
+.preview-close,
+.preview-nav-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--accent-2);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.preview-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 1.4rem;
+  width: 38px;
+  height: 38px;
+}
+
+.preview-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: rotate(90deg);
+}
+
+/* tombol kiri-kanan */
+.preview-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+}
+
+.preview-nav-btn.prev {
+  left: -52px;
+}
+
+.preview-nav-btn.next {
+  right: -52px;
+}
+
+.preview-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-50%) scale(1.15);
+}
+
+@media (max-width: 600px) {
+  .preview-nav-btn.prev {
+    left: 8px;
+  }
+  .preview-nav-btn.next {
+    right: 8px;
+  }
+  .preview-close {
+    top: 4px;
+    right: 6px;
+  }
+}
+
+
+
+/* =========================================================
+   BACKGROUND — Nebula Calm (ZensFox)
+   ========================================================= */
+
+.bg-nebula {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, #0b223a 0%, #061427 80%);
+  overflow: hidden;
+  z-index: -2;
+}
+
+/* --- Kabut halus --- */
+.bg-nebula::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 30% 30%, rgba(131,230,255,0.15), transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(180,150,255,0.12), transparent 70%);
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+/* --- Titik cahaya bintang --- */
+.bg-nebula::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 40%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 85% 60%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 10% 70%, rgba(255,255,255,0.3), transparent);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.7;
+}
+
+
+.aurora-divider {
+  width: 60%;
+  height: 1px;
+  margin: 28px auto 12px;
+  background: linear-gradient(90deg, transparent, rgba(131,230,255,0.4), transparent);
+  opacity: 0;
+  animation: lineFade 1.5s ease forwards 1.5s;
+}
+@keyframes lineFade {
+  0% { opacity: 0; width: 40%; }
+  100% { opacity: 1; width: 60%; }
+}
+
+
+
+/* =========================================================
+   ZENSFOX — Art Credit Scroll + Arrow Navigation
+   ========================================================= */
+
+.art-credit {
+  text-align: center;
+  margin-top: 50px;
+  font-family: "Outfit", sans-serif;
+  color: rgba(220, 240, 255, 0.9);
+  animation: artFade .8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes artFade {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.art-credit h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #9AD5FF, #E6F7FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+}
+
+/* Wrapper untuk arrows + scroll area */
+.art-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Arrow buttons */
+.scroll-btn {
+  position: absolute;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  color: #AEE4FF;
+  font-size: 18px;
+  cursor: pointer;
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-btn:hover {
+  background: rgba(255,255,255,0.12);
+  transform: scale(1.12);
+}
+
+.left-btn { left: -5px; }
+.right-btn { right: -5px; }
+
+/* Scroll area */
+.art-scroll {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  scrollbar-width: none;
+}
+.art-scroll::-webkit-scrollbar { display: none; }
+
+/* Mask lebih lembut (biar foto kiri ga kepotong parah) */
+.art-scroll {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+
+/* Glass card kecil */
+.art-card {
+  flex: 0 0 auto;
+  width: 85px;
+  height: 105px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 10px rgba(130,230,255,0.12),
+    inset 0 0 20px rgba(130,230,255,0.08);
+  overflow: hidden;
+  transition: .3s ease;
+  text-decoration: none;
+}
+
+.art-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 18px rgba(130,230,255,0.22),
+    inset 0 0 25px rgba(130,230,255,0.15);
+}
+
+/* Image */
+.art-image {
+  width: 100%;
+  height: 72%;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Name */
+.artist-name {
+  font-size: .85rem;
+  color: #AEE4FF;
+  margin-top: 5px;
+  opacity: .85;
+}
+
+
+/* ===== Preview Image Slide Animation ===== */
+
+.preview-img.slide-left {
+  animation: slideLeft .35s ease;
+}
+
+.preview-img.slide-right {
+  animation: slideRight .35s ease;
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+/* =========================================================
+   1. Aurora Background Slow Movement
+   ========================================================= */
+.bg-nebula::before {
+  animation: nebulaMove 24s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaMove {
+  0% {
+    transform: translate(0,0) scale(1);
+  }
+  100% {
+    transform: translate(-6%, -4%) scale(1.1);
+  }
+}
+
+/* =========================================================
+   3. Hover Glow (Avatar & Works)
+   ========================================================= */
+.avatar img {
+  transition: .35s ease;
+}
+
+.avatar img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(150,220,255,0.35));
+}
+
+.work {
+  transition: .3s ease;
+}
+
+.work:hover {
+  transform: scale(1.04);
+  box-shadow:
+      0 0 12px rgba(131,230,255,0.18),
+      0 0 20px rgba(131,230,255,0.1) inset;
+}
+
+/* =========================================================
+   8. Zoom Hover for Works (bigger but soft)
+   ========================================================= */
+.work img {
+  transition: transform .3s ease;
+}
+
+.work:hover img {
+  transform: scale(1.06);
+}
+
+/* =========================================================
+   9. Panel Switch Bounce
+   ========================================================= */
+.page.show {
+  animation: panelBounce .4s cubic-bezier(.18,.89,.32,1.2);
+}
+
+@keyframes panelBounce {
+  0% { transform: translateY(12px); opacity: 0; }
+  65% { transform: translateY(-2px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================================
+   5. Panel Title Transition
+   ========================================================= */
+.panel-title #panelTitle,
+.panel-sub#panelSub {
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.panel-title.fading #panelTitle,
+.panel-sub.fading {
+  opacity: 0 !important;
+  transform: translateY(6px);
+}
+
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+
+
+.bg-light-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 25% 30%, rgba(131,230,255,0.14), transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(180,150,255,0.10), transparent 60%);
+  mix-blend-mode: screen;
+  filter: blur(90px);
+  animation: overlayFloat 20s ease infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes overlayFloat {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  100% { transform: translate(-8%, 6%) scale(1.15); opacity: 0.7; }
+}
